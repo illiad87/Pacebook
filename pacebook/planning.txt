@@ -1,0 +1,97 @@
+// website.db .schema
+CREATE TABLE drills (
+id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+name TEXT NOT NULL,
+description TEXT NOT NULL,
+position TEXT NOT NULL,
+skill TEXT NOT NULL,
+objective TEXT NOT NULL,
+image_file_name TEXT NOT NULL,
+difficulty TEXT NOT NULL,
+video_file_name TEXT NOT NULL,
+number_of_players TEXT NOT NULL,
+equipment TEXT NOT NULL,
+field_dimensions TEXT NOT NULL,
+duration TEXT NOT NULL
+);
+
+// inserting template
+INSERT INTO drills (name, description, position, skill, objective,
+image_file_name, difficulty, video_file_name, number_of_players,
+equipment, field_dimensions, duration) VALUES ('Name', 'Description',
+'Position', 'Skill', 'Objective', 'project/website/static/drill1.png',
+'Any level', 'project/website/static/drill1.mp4', '2-4',
+'4 cones; 2 passing goals; 2 bright different bright coloured objects (Ex. bibs, cones)',
+'1mx1m or 2mx2m', '10-15 min');
+
+
+1. El Rondo
+
+INSERT INTO drills (name, description,
+position, skill, objective,
+image_file_name, difficulty, video_file_name, number_of_players,
+equipment, field_dimensions, duration) VALUES ('El Rondo', "One or two defenders stand in the middle of a circle created by the ball possessors. Ball possessors must maintain a passing sequence, while the defenders must ruin the possessors’ passing sequence.",
+'Any', 'Passing, receiving, applying pressure, winning the ball, vision and awareness',
+'Ball possesors must keep possession of the ball and maintain a passing sequence, while the defenders must apply pressure and win the ball from the ball possessors.', '/static/drill1.png', 'Medium-Hard',
+'https://www.youtube.com/watch?v=3RNfaIW5k1g', '5-11', '4 cones', '2m x 2m OR 3m x 3m', '5-15 min');
+
+
+2. Four Corners Passing Drill
+INSERT INTO drills (name, description,
+position, skill, objective,
+image_file_name, difficulty, video_file_name, number_of_players,
+equipment, field_dimensions, duration) VALUES ('Four Corners Passing Drill', "An equal amount of players must stand at each of the 4 cones, and they continue on a sequence of receiving, passing to a player and joining their line.",
+'Any', 'Receiving and passing', 'Open up the body when receiving to play a quick and accurate pass', '/static/four_corners_passing_drill.png', 'Easy',
+'https://www.youtube.com/watch?v=G30S6lqWdhw', '4-12', '4 cones', '3m x 3m TO 5m x 5m', '5-10 min');
+
+3. 1v1 Speed and Reaction Game
+INSERT INTO drills (name, description,
+position, skill, objective,
+image_file_name, difficulty, video_file_name, number_of_players,
+equipment, field_dimensions, duration) VALUES (
+'1v1 Speed and Reaction Game',
+"This fun 1v1 drill practices quick reaction and speed, concluding with a 1v1 battle to small goals.",
+'Any', 'Speed, Reaction Time', "Improve reaction to coach's call and explosive sprints, ending with goal scoring",
+'/static/1v1_speed_and_reaction_game.png', 'Moderate', 'https://www.youtube.com/watch?v=1r0utiiuKlk', '8-16',
+'Soccer balls, cones or flags, small goals', '15x25 yards (adjust based on players)', '10-15 minutes');
+
+4. 4v3 Attack vs. Defense
+INSERT INTO drills (name, description,
+position, skill, objective,
+image_file_name, difficulty, video_file_name, number_of_players,
+equipment, field_dimensions, duration) VALUES (
+'4v3 Attack vs. Defense',
+"This attacking drill focuses on exploiting a numerical advantage to finish with a shot on goal.",
+'Any', 'Attacking, Finishing', 'Improve offensive movement, decision-making, and scoring against outnumbered defense',
+'/static/images/4v3_attack_vs_defense.png', 'Medium', 'https://www.youtube.com/watch?v=UWIwLQjm1rU', '8 (3 defenders + 4 attackers + goalie)',
+'Disc cones, scrimmage pinnies, soccer balls, full-size goal', '30x30 yard grid with one side playing towards a goal', '10-15 minutes');
+
+5.
+INSERT INTO drills (name, description,
+position, skill, objective,
+image_file_name, difficulty, video_file_name, number_of_players,
+equipment, field_dimensions, duration) VALUES (
+'Attack vs. Defence Shooting and Defending Drill',
+"Fast-paced drill for both attacking (shooting) and defending skills, popular with players.",
+'Any', 'Shooting, Defending', 'Practice quick attacking shots and transition from offense to defense',
+'static/images/1v1_attack_vs_defence_shooting_defending_drill.png', 'Medium', 'https://www.youtube.com/watch?v=wtisxXyNBVQ', '8-16 (4 attackers + 4 defenders + goalie)',
+'Disc cones, scrimmage pinnies, soccer balls, full-size goal', 'Penalty box width x 25-30 yards from goal', '10-15 minutes');
+
+FOR VIDEO (TEST)
+INSERT INTO drills (name, description,
+position, skill, objective,
+image_file_name, difficulty, video_file_name, number_of_players,
+equipment, field_dimensions, duration) VALUES (
+
+
+3v3 Plus 3
+Small-sided possession drill focusing on passing, receiving, movement, and awareness, with dynamic defender rotation.
+Any
+Passing, Receiving, Positioning
+Develop technical skills and decision-making for maintaining possession against pressure
+
+9 (3 teams of 3)
+Disc cones, scrimmage pinnies, soccer balls
+20x20 yard grid
+10-15 minutes
+(don't show) https://www.youtube.com/watch?v=2FrrJjDOn5g

@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add a drill
+{% endblock %}
+
+{% block main %}
+  <script src="static/add_drill.js"></script>
+  <h1 id="index-title" class="centered">Add your own drill</h1>
+
+  <div class="centered" id="drill_form">
+    <form action="/add_drill" method="POST" class="form-container" enctype="multipart/form-data">
+      <div class="mb-3 input-container">
+        <div class="icon-container add_a_drill">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+            <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12"/>
+          </svg>
+          <div class="text_title">Image</div>
+        </div>
+        <input type="file" accept="image/jpeg, image/png, image/jpg" class="form-control text_input" name="image_file" required id="image_input">
+        <input type="hidden" name="image_filename" id="image_filename">
+      </div>
+
+      <div class="spinner-border text-primary" id="image_upload_spinner" role="status" style="display: none;">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+
+      <img src="" class="centered" id="drill_image" width="450px">
+      <div class="mb-3 input-container">
+        <div class="icon-container add_a_drill">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-diamond-half" viewBox="0 0 16 16">
+            <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 .989c.127 0 .253.049.35.145l6.516 6.516a.495.495 0 0 1 0 .7L8.35 14.866a.493.493 0 0 1-.35.145V.989z"/>
+          </svg>
+          <div class="text_title">Title</div>
+        </div>
+        <input type="text" class="form-control text_input" required name="title" id="title" placeholder="Title">
+      </div>
+      <div class="mb-3 input-container">
+        <div class="icon-container add_a_drill">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+          </svg>
+          <div class="text">Description</div>
+        </div>
+        <input type="text" class="form-control text_input" required name="description" id="description" placeholder="Description">
+      </div>
+      <div class="mb-3 input-container">
+        <div class="icon-container add_a_drill">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+          </svg>
+          <div class="text">Position</div>
+        </div>
+        <input type="text" class="form-control text_input" name="position" id="position" placeholder='Position (optional)'>
+      </div>
+      <div class="mb-3 input-container">
+        <div class="icon-container add_a_drill">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
+          </svg>
+          <div class="text_skill">Skill</div>
+        </div>
+        <input type="text" class="form-control text_input" required name="skill" id="skill" placeholder="Skill(s)">
+      </div>
+
+      <div class="mb-3 input-container">
+        <div class="icon-container add_a_drill">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0Z"/>
+            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7Z"/>
+          </svg>
+          <div class="text">Objective</div>
+        </div>
+        <input type="text" class="form-control text_input" required name="objective" id="objective" placeholder="Objective">
+      </div>
+
+      <div class="mb-3 input-container">
+        <div class="icon-container add_a_drill">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-octagon" viewBox="0 0 16 16">
+            <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
+            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+          </svg>
+          <div class="text">Difficulty</div>
+        </div>
+
+        <div class="radio-grid">
+          <div>
+            <input type="radio" id="easy" name="difficulty" value="Easy" required>
+            <label for="easy" id="l-easy">Easy</label>
+          </div>
+          <div>
+            <input type="radio" id="easy-medium" name="difficulty" value="Easy-Medium">
+            <label for="easy-medium" id="l-easy-medium">Easy-Medium</label>
+          </div>
+          <div>
+            <input type="radio" id="medium" name="difficulty" value="Medium">
+            <label for="medium" id="l-medium">Medium</label>
+          </div>
+          <div>
+            <input type="radio" id="medium-hard" name="difficulty" value="Medium-hard">
+            <label for="medium-hard" id="l-medium-hard">Medium-hard</label>
+          </div>
+          <div>
+            <input type="radio" id="hard" name="difficulty" value="Hard">
+            <label for="hard" id="l-hard">Hard</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3 input-container">
+        <div class="icon-container add_a_drill">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+          </svg>
+          <div class="text">Number of players</div>
+        </div>
+        <input type="text" class="form-control text_input" required name="number_of_players" id="number_of_players" placeholder="Number of players">
+      </div>
+      <div class="mb-3 input-container">
+        <div class="icon-container add_a_drill">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cone" viewBox="0 0 16 16">
+            <path d="M7.03 1.88c.252-1.01 1.688-1.01 1.94 0l2.905 11.62H14a.5.5 0 0 1 0 1H2a.5.5 0 0 1 0-1h2.125L7.03 1.88z"/>
+          </svg>
+          <div class="text">Equipment</div>
+        </div>
+        <input type="text" class="form-control text_input" required name="equipment" id="equipment" placeholder="Equipment">
+      </div>
+      <div class="mb-3 input-container">
+        <div class="icon-container add_a_drill">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-rulers" viewBox="0 0 16 16">
+            <path d="M1 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5v-1H2v-1h4v-1H4v-1h2v-1H2v-1h4V9H4V8h2V7H2V6h4V2h1v4h1V4h1v2h1V2h1v4h1V4h1v2h1V2h1v4h1V1a1 1 0 0 0-1-1H1z"/>
+          </svg>
+          <div class="text">Dimensions</div>
+        </div>
+        <input type="text" class="form-control text_input" required name="dimensions" id="dimensions" placeholder="Dimensions">
+      </div>
+      <div class="mb-3 input-container">
+        <div class="icon-container add_a_drill">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+          </svg>
+          <div class="text">Duration</div>
+        </div>
+        <input type="text" class="form-control text_input" required name="duration" id="duration" placeholder="Duration">
+      </div>
+      <div class="mb-3 input-container">
+        <div class="icon-container add_a_drill">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+            <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408z"/>
+          </svg>
+          <div class="text">YouTube Link</div>
+        </div>
+        <input type="url" class="form-control text_input" name="youtube_link" id="youtube_link" placeholder="YouTube Link (optional)">
+      </div>
+      <button type="submit" id="add_a_drill_submit" class="btn btn-primary">Add drill</button>
+    </form>
+  </div>
+
+
+{% endblock %}
